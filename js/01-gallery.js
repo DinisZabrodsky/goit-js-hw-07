@@ -38,6 +38,8 @@ function openImage(event) {
 
     window.addEventListener('keydown', closeImage);
 
+    // Розумію, що костиль, але "const instance" оголошена в середині функції і за її межами не існує. Нажаль, на даному етапі, я не розумію, як зробити щоб до неї можна було добратись із функції яка буде оголошена за межами даної
+
     function closeImage(event) {
         console.log(event.code);
         if (event.code === 'Escape') {
