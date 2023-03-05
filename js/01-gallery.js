@@ -12,7 +12,7 @@ gallery.addEventListener('click', openImage);
 
 function createGalery(gallery) {
     return gallery.map(({ preview, original, description }) => {
-        return`
+        return `
         <div class="gallery__item">
             <a class="gallery__link" href="${original}" rel="noopener noreferrer">
                 <img
@@ -34,10 +34,16 @@ function openImage(event) {
     const instance = basicLightbox.create(`
     <img src="${event.target.dataset.source}" width="1280" height="855">`);
 
-    instance.show()
+    instance.show();
 
-}
+    window.addEventListener('keydown', closeImage);
 
-function cloceImageOnEsc() {
-    
+    function closeImage(event) {
+        console.log(event.code);
+        if (event.code === 'Escape') {
+            instance.close()
+            window.removeEventListener('keydown', closeImage);
+        }
+    };
+
 };
